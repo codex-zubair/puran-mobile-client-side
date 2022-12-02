@@ -17,11 +17,10 @@ const Category = () => {
 
 
 
-    const { data: category, refetch } = useQuery({
+    const { data: category = [], refetch } = useQuery({
         queryKey: ['category'], queryFn: () => fetch(`https://puran-mobile-server-side.vercel.app/category/${name}`)
             .then(res => res.json())
     })
-
 
 
 
@@ -43,7 +42,7 @@ const Category = () => {
     return (
         <section className='flex flex-col gap-5 my-10'>
             <h1 className='text-center text-5xl font-semibold my-5'>{name}</h1>
-            {category?.map((phone, index) =><div className='flex flex-col mx-5'> <CategoryCard refetch={refetch} setSelected={setSelected} selected={selected} key={index} categoryName={name} phone={phone}></CategoryCard></div>)
+            {category?.map((phone, index) => <div className='flex flex-col mx-5'> <CategoryCard refetch={refetch} setSelected={setSelected} selected={selected} key={index} categoryName={name} phone={phone}></CategoryCard></div>)
 
             }
             {selected && <BookNowModal user={user} setSelected={setSelected} phone={selected}></BookNowModal>}
