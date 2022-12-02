@@ -1,12 +1,15 @@
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Advertised = () => {
 
     const [items, setItems] = useState()
 
-    axios.get('https://puran-mobile-server-side.vercel.app/product/advertise')
+
+    useEffect(()=> {
+        axios.get('https://puran-mobile-server-side.vercel.app/product/advertise')
         .then(data => setItems(data.data))
+    }, [])
 
     
     return (

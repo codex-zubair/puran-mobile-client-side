@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { userAuthContext } from '../../Context/UserContext/UserContext';
 import axios from 'axios';
@@ -20,22 +20,24 @@ const Drawer = ({ children }) => {
 
 
     // Loading user details
-    axios.get(`https://puran-mobile-server-side.vercel.app/user/${user?.email}`)
-        .then(data => {
-            if (data.status) {
+    useEffect(() => {
+        axios.get(`https://puran-mobile-server-side.vercel.app/user/${user?.email}`)
+            .then(data => {
+                if (data.status) {
 
-                if (data?.data[0]?.role === 'seller') {
-                    setSeller(true);
+                    if (data?.data[0]?.role === 'seller') {
+                        setSeller(true);
+                    }
+                    else if (data?.data[0]?.role === 'user') {
+                        setBuyer(true);
+                    }
+                    else if (data?.data[0]?.role === 'admin') {
+                        setAdmin(true);
+                    }
                 }
-                else if (data?.data[0]?.role === 'user') {
-                    setBuyer(true);
-                }
-                else if (data?.data[0]?.role === 'admin') {
-                    setAdmin(true);
-                }
-            }
 
-        });
+            });
+    }, [user?.email])
 
 
 
@@ -49,7 +51,7 @@ const Drawer = ({ children }) => {
         <div className="drawer drawer-mobile">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content flex flex-col ">
-              
+
                 {/* <!-- Page content here --> */}
 
                 <div>{children}</div>

@@ -18,12 +18,6 @@ const CategoryCard = ({ phone, setSelected }) => {
 
         phone.email = user.email;
 
-        // axios.put(`https://puran-mobile-server-side.vercel.app/wish-list/:${_id}`, phone)
-        //     .then(data => toast.success("item added to wish list!"))
-        //     .catch(error => console.log(error))
-
-
-
         fetch(`https://puran-mobile-server-side.vercel.app/wish-list/${_id}`, {
             method: 'PUT',
             headers: { 'content-type': 'application/json' },
