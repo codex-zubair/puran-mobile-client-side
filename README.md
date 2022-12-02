@@ -75,8 +75,4 @@
 ### Admin can verify seller
 ### Mobile responsive
 ### user can  add wish list item
-
-
-
-### USE can Searching items now working
-
+### User can search now product and order them(search system implemented)

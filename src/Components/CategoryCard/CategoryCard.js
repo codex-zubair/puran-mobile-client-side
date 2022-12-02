@@ -7,6 +7,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const CategoryCard = ({ phone, setSelected }) => {
+   
 
     const { _id, item_name, image, location, original_price, resale_price, seller_name, date, years_of_use, verified } = phone;
 

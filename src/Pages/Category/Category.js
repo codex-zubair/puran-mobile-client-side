@@ -27,12 +27,6 @@ const Category = () => {
 
 
 
-    // fetch(`https://puran-mobile-server-side.vercel.app/category/${name}`)
-    //     .then(res => res.json())
-    //     .then(data => setCategory(data[0]?.list))
-
-
-
     const [selected, setSelected] = useState(null);
 
 

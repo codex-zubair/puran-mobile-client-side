@@ -15,6 +15,7 @@ import Blog from "../Pages/Blog/Blog";
 import MyProducts from "../Pages/MyProducts/MyProducts";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Payment from "../Pages/Payment/Payment";
+import SearchResult from "../Pages/SearchResult/SearchResult";
 
 export const route = createBrowserRouter([
     {
@@ -37,7 +38,10 @@ export const route = createBrowserRouter([
             {
                 path: '/blog', element: <Blog></Blog>
             },
-
+            {
+                path: '/search-result/:search_text', element: <SearchResult></SearchResult>,
+                loader: ({params})=> fetch(`https://puran-mobile-server-side.vercel.app/search/?search=${params.search_text}`)
+            },
 
             {
                 path: '*', element: <ErrorPage></ErrorPage>
