@@ -3,13 +3,13 @@
 ## Fully (MERN Stack) Project  
 
 ## Live Web Application LINK
- [Link](https://puran-mobile.web.app).
+ [LIVE Website LINK](https://puran-mobile.web.app).
 
 
 
 ## Server side live Link
 
- [Link](https://puran-mobile-server-side.vercel.app).
+ [Link Server Side LINK](https://puran-mobile-server-side.vercel.app).
 
 
 # FrameWork
@@ -75,4 +75,8 @@
 ### Admin can verify seller
 ### Mobile responsive
 ### user can  add wish list item
+
+
+
+### USE can Searching items now working
 

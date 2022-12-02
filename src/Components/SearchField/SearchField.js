@@ -2,8 +2,13 @@ import React from 'react';
 
 
 const SearchField = () => {
+    
+    
+
+
+
     return (
-        <div className='items-center my-0 bg-primary flex justify-center'>
+        <form className='items-center my-0 bg-primary flex justify-center'>
             <div className='flex items-center w-10/12 justify-center'>
                 <input type="text" className='input my-2 lg:my-10 input-bordered w-8/12 lg:w-5/12' />
                 <button className="btn">
@@ -12,7 +17,7 @@ const SearchField = () => {
 
             </div>
             <label  htmlFor="my-drawer-2" className=" btn drawer-button rounded-none lg:hidden">My Account</label>
-        </div>
+        </form>
     );
 };
 

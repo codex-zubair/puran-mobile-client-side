@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContext } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { FaGoogle, FaGithub } from 'react-icons/fa';
+import { FaGoogle } from 'react-icons/fa';
 import { userAuthContext } from '../../Context/UserContext/UserContext';
 import { SaveUserInfo } from '../../SharedFunction/SaveUserInfo';
 
