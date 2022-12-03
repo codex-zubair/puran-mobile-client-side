@@ -63,8 +63,9 @@ const Drawer = ({ children }) => {
 
                     {
                         admin && <ul className="menu p-4 w-56 gap-2  text-base-content ">
-                            <li className=' rounded-none'><Link className='btn btn-outline' to='/dashboard/all-buyer'>All Buyer</Link></li>
+                            <li className=' rounded-none'><Link className='btn btn-outline' to='/dashboard/all-seller-products'>All Seller Products</Link></li>
                             <li className=' rounded-none'><Link className='btn btn-outline' to='/dashboard/all-seller'>All Seller</Link></li>
+                            <li className=' rounded-none'><Link className='btn btn-outline' to='/dashboard/all-buyer'>All Buyer</Link></li>
                         </ul>
                     }
 

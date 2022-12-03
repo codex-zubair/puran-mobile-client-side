@@ -16,7 +16,7 @@ import MyProducts from "../Pages/MyProducts/MyProducts";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Payment from "../Pages/Payment/Payment";
 import SearchResult from "../Pages/SearchResult/SearchResult";
-
+import AllProducts from "../Pages/AllProducts/AllProducts";
 export const route = createBrowserRouter([
     {
         path: '/', element: <Main></Main>,
@@ -62,6 +62,9 @@ export const route = createBrowserRouter([
             },
             {
                 path: '/dashboard/all-seller', element: <AllSeller></AllSeller>
+            },
+            {
+                path: '/dashboard/all-seller-products', element: <AllProducts></AllProducts>
             },
 
 
