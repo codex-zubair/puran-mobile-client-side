@@ -76,3 +76,10 @@
 ### Mobile responsive
 ### user can  add wish list item
 ### User can search now product and order them(search system implemented)
+
+
+# Admin Section
+### Admin can now delete any item of seller
+### Admin can Verify Seller 
+### Admin Can Delete Seller
+### Admin Can Delete any user.
