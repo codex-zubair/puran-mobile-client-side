@@ -19,7 +19,7 @@ const AllProducts = () => {
                 console.log(data.data)
               
             })
-    }, [user])
+    }, [user,myProducts])
 
 
     // Item Delete system
