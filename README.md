@@ -1,3 +1,6 @@
+# THIS One IS MY WROST PROJECT i didn't like to do it much so please don't look on color layout stuff. i don't like it and i'm not going to work on it more but it's fully MERN Stack project i did fully CURD operation but still needs a lots of on this project but i don't want to work on it. this one is suck!!!
+
+
 # Puran Mobile || Used Mobile Web Application 
 ## Build by MongoDB, EXPRESS, React, Node.js 
 ## Fully (MERN Stack) Project  
