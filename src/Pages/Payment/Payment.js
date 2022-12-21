@@ -36,11 +36,11 @@ const Payment = () => {
                 <span className='mr-3 text-2xl'>Brand : {category} , </span>
                 <span className='mr-3 text-xl'>Model : {item_name}</span>
             </h2>
-            <div className='my-12 w-96'>
+            {/* <div className='my-12 w-96'>
                 <Elements stripe={stripePromise}>
                     <CheckoutForm bookings={product} />
                 </Elements>
-            </div>
+            </div> */}
         </div>
     );
 };
