@@ -6,7 +6,7 @@
 ## Fully (MERN Stack) Project  
 
 ## Live Web Application LINK
- [LIVE Website LINK](https://puran-mobile.web.app).
+https://puran-mobile.web.app
 
 
 
