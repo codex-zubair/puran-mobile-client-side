@@ -1,106 +1,54 @@
-import React, { useEffect, useState } from "react";
-import {
-    PaymentElement,
-    useStripe,
-    useElements
-}from "@stripe/react-stripe-js";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js';
+import React from 'react';
+import { useLoaderData, useNavigation } from 'react-router-dom';
+import CheckoutForm from '../../Components/CheckoutForm/CheckoutForm';
 
 const Payment = () => {
-    const stripe = useStripe();
-    const elements = useElements();
 
-    const [message, setMessage] = useState(null);
-    const [isLoading, setIsLoading] = useState(false);
+    const stripePromise = loadStripe(process.env.REACT_APP_stripe_key);
 
-    useEffect(() => {
-        if (!stripe) {
-            return;
-        }
 
-        const clientSecret = new URLSearchParams(window.location.search).get(
-            "payment_intent_client_secret"
-        );
 
-        if (!clientSecret) {
-            return;
-        }
+    const item = useLoaderData();
+    const product = item[0]
 
-        stripe.retrievePaymentIntent(clientSecret).then(({ paymentIntent }) => {
-            switch (paymentIntent.status) {
-                case "succeeded":
-                    setMessage("Payment succeeded!");
-                    break;
-                case "processing":
-                    setMessage("Your payment is processing.");
-                    break;
-                case "requires_payment_method":
-                    setMessage("Your payment was not successful, please try again.");
-                    break;
-                default:
-                    setMessage("Something went wrong.");
-                    break;
-            }
-        });
-    }, [stripe]);
+    // console.log("product", product);
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
 
-        if (!stripe || !elements) {
-            // Stripe.js has not yet loaded.
-            // Make sure to disable form submission until Stripe.js has loaded.
-            return;
-        }
 
-        setIsLoading(true);
 
-        const { error } = await stripe.confirmPayment({
-            elements,
-            confirmParams: {
-                // Make sure to change this to your payment completion page
-                return_url: "http://localhost:3000",
-            },
-        });
+    const { category, item_name, resale_price } = product;
 
-        // This point will only be reached if there is an immediate error when
-        // confirming the payment. Otherwise, your customer will be redirected to
-        // your `return_url`. For some payment methods like iDEAL, your customer will
-        // be redirected to an intermediate site first to authorize the payment, then
-        // redirected to the `return_url`.
-        if (error.type === "card_error" || error.type === "validation_error") {
-            setMessage(error.message);
-        } else {
-            setMessage("An unexpected error occurred.");
-        }
-
-        setIsLoading(false);
-    };
-
-    const paymentElementOptions = {
-        layout: "tabs"
+    const navigation = useNavigation()
+    if (navigation.state === 'loading') {
+        //TODO use loader
     }
-
     return (
-        <form id="payment-form" onSubmit={handleSubmit}>
-            <PaymentElement id="payment-element" options={paymentElementOptions} />
-            <button disabled={isLoading || !stripe || !elements} id="submit">
-                <span id="button-text">
-                    {isLoading ? <div className="spinner" id="spinner"></div> : "Pay now"}
-                </span>
-            </button>
-            {/* Show any error or success messages */}
-            {message && <div id="payment-message">{message}</div>}
-        </form>
+        <div>
+            <h1 className='text-center text-4xl font-semibold my-2'>Payment Now</h1>
+            <h1 className='text-center text-4xl font-semibold my-2'>Coming Soon</h1>
+            <div className='mx-5 font-semibold grid grid-cols-2 my-24'>
+                <div>
+                    <h2 className='text-start text-2xl ml-10'>
+                        Please pay :
+                        <span className='text-blue-600 font-bold'> ${resale_price}</span>
+                    </h2>
+                    <h2 className='text-start text-xl my-2 ml-10'>For,</h2>
+                    <h2 className='text-start ml-10'>
+                        <span className='mr-3  text-2xl'>Brand : {category} , </span>
+                        <span className='mr-3  text-2xl'>Model : {item_name}</span>
+                    </h2>
+                </div>
+                <div className='my-12 w-96 flex '>
+                    <Elements stripe={stripePromise}>
+                        <CheckoutForm bookings={product} />
+                    </Elements>
+                </div>
+            </div>
+        </div>
     );
-}
+};
 
 export default Payment;
 
-
-
-
-// const stripePromise = loadStripe(process.env.REACT_APP_stripe_key);
-// // console.log(process.env.REACT_APP_STRIPE_PK);
-// const Payment = () => {
-//     const item = useLoaderData();
-//     const product = item[0]
