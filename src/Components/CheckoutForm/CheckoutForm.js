@@ -2,9 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
- 
+import { useContext } from 'react';
+
 const CheckoutForm = ({ bookings }) => {
-    const { resellPrice, buyerName, buyerEmail, _id } = bookings;
+    // TODO buyer name buyer email.
+    // const { resellPrice, buyerName, buyerEmail, _id } = bookings;
+
+    const buyerName = 'abul'
+    const buyerEmail = 'nmzubayeralam@gmail.com'
+
+
     const [cardError, setCardError] = useState('');
     const [success, setSuccess] = useState('');
     const [processing, setProcessing] = useState(false);
@@ -13,7 +20,10 @@ const CheckoutForm = ({ bookings }) => {
     const elements = useElements();
     const [clientSecret, setClientSecret] = useState('');
     const navigate = useNavigate();
- 
+
+
+    console.log(bookings);
+
     // useEffect(() => {
     //     // Create PaymentIntent as soon as the page loads
     //     fetch('https://assignment-twelve-server.vercel.app/create-payment-intent', {
@@ -24,10 +34,10 @@ const CheckoutForm = ({ bookings }) => {
     //         .then((res) => res.json())
     //         .then((data) => setClientSecret(data.clientSecret));
     // }, [resellPrice]);
- 
+
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+
         //! Stripe Card Method
         if (!stripe || !elements) {
             // Stripe.js has not loaded yet. Make sure to disable
@@ -38,12 +48,12 @@ const CheckoutForm = ({ bookings }) => {
         if (card === null) {
             return;
         }
- 
-        const { error} = await stripe.createPaymentMethod({
+
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card,
         });
- 
+
         if (error) {
             console.log(error);
             setCardError(error.message);
@@ -54,7 +64,7 @@ const CheckoutForm = ({ bookings }) => {
         setProcessing(true);
 
         //! Stripe Method Card name buyer email.
- 
+
         const { paymentIntent, error: ConfirmError } =
             await stripe.confirmCardPayment(clientSecret, {
                 payment_method: {
@@ -65,21 +75,21 @@ const CheckoutForm = ({ bookings }) => {
                     },
                 },
             });
- 
+
         if (ConfirmError) {
             setCardError(ConfirmError.message);
             return;
         }
         // if (paymentIntent.status === 'succeeded') {
         //     //Store the payment information in the database
- 
+
         //     const payment = {
         //         resellPrice,
         //         transactionId: paymentIntent.id,
         //         buyerEmail,
         //         paymentId: _id,
         //     };
- 
+
         //     fetch('https://assignment-twelve-server.vercel.app/payment', {
         //         method: 'POST',
         //         headers: {
@@ -121,13 +131,13 @@ const CheckoutForm = ({ bookings }) => {
                         },
                     }}
                 />
- 
+
                 <button
-                    className='btn btn-sm btn-secondary my-5'
+                    className='btn mx-9 my-3'
                     type='submit'
                     disabled={!stripe || !clientSecret || processing}
                 >
-                    Pay
+                    Pay Now
                 </button>
             </form>
             <p className='text-red-600 ml-10'>{cardError}</p>
@@ -143,5 +153,5 @@ const CheckoutForm = ({ bookings }) => {
         </div>
     );
 };
- 
+
 export default CheckoutForm;
