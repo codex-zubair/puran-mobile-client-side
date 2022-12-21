@@ -36,7 +36,7 @@ https://puran-mobile.web.app
 ### npm i @tanstack/react-query
 ###  npm install axios
 ### npm install react-hook-form
-### npm install @stripe/react-stripe-js @stripe/stripe-js
+### npm install --save @stripe/react-stripe-js @stripe/stripe-js
 
 
 
