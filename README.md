@@ -36,6 +36,7 @@
 ### npm i @tanstack/react-query
 ###  npm install axios
 ### npm install react-hook-form
+### npm install @stripe/react-stripe-js @stripe/stripe-js
 
 
 
@@ -79,6 +80,7 @@
 ### Mobile responsive
 ### user can  add wish list item
 ### User can search now product and order them(search system implemented)
+### Stripe system user can pay via card
 
 
 # Admin Section
