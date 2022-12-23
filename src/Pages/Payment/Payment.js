@@ -26,8 +26,7 @@ const Payment = () => {
     }
     return (
         <div>
-            <h1 className='text-center text-4xl font-semibold my-2'>Payment Now</h1>
-            <h1 className='text-center text-4xl font-semibold my-2'>Coming Soon</h1>
+            <h1 className='text-center text-4xl font-semibold my-2'>Pay For {item_name}</h1>
             <div className='mx-5 font-semibold grid grid-cols-2 my-24'>
                 <div>
                     <h2 className='text-start text-2xl ml-10'>
@@ -39,12 +38,12 @@ const Payment = () => {
                         <span className='mr-3  text-2xl'>Brand : {category} , </span>
                         <span className='mr-3  text-2xl'>Model : {item_name}</span>
                     </h2>
+
+                    <div className='my-12 flex ml-5 '>
+                        <button className='btn btn-success ml-5'>Pay Now</button>
+                    </div>
                 </div>
-                <div className='my-12 w-96 flex '>
-                    <Elements stripe={stripePromise}>
-                        <CheckoutForm bookings={product} />
-                    </Elements>
-                </div>
+
             </div>
         </div>
     );
